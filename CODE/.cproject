@@ -178,4 +178,5 @@
 			<resource resourceType="PROJECT" workspacePath="/VLX_Project"/>
 		</configuration>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>

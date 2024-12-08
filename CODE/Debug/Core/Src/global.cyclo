@@ -8,4 +8,4 @@
 ../Core/Src/global.c:85:6:YellowLight2	1
 ../Core/Src/global.c:90:6:GreenLight2	1
 ../Core/Src/global.c:96:6:BlinkLed	1
-../Core/Src/global.c:100:6:Run_Traffic_Light	4
+../Core/Src/global.c:100:6:Run_Traffic_Light	1

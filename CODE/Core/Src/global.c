@@ -98,11 +98,8 @@ void BlinkLed(){
 }
 
 void Run_Traffic_Light(){
-	  //run_manual();
-	  //run_setting();
+	run_setting();
+	run_manual();
 	run_automatic();
-	if((status1/30)!=1 )count1--;
-	if((status2/30)!=1 )count2--;
-	if((status1/30)==1 )count3--;
 }
 

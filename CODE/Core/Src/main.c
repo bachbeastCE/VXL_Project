@@ -60,10 +60,11 @@ static void MX_I2C1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void run_all(){
-	run_automatic();
-	run_manual();
-}
+
+
+
+uint8_t HeartChar[] = {0x00, 0x00, 0x0a, 0x15, 0x11, 0x0a, 0x04, 0x00};
+uint8_t SmileyFaceChar[] = {0x00, 0x00, 0x0a, 0x00, 0x1f, 0x11, 0x0e, 0x00};
 /* USER CODE END 0 */
 
 /**
@@ -105,27 +106,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 
   SCH_Init();
-  SCH_Add_Task(BlinkLed, 0 , 1000);
+  //SCH_Add_Task(BlinkLed, 0 , 1000);
   //SCH_Add_Task(BlinkLed2, 0 , 2000);
   SCH_Add_Task(Run_Traffic_Light,0,100);
-  //SCH_Add_Task(getKeyInput, 0 , 10);
-
-
-
-//  uint8_t HeartChar[] = {0x00, 0x00, 0x0a, 0x15, 0x11, 0x0a, 0x04, 0x00};
-//  uint8_t SmileyFaceChar[] = {0x00, 0x00, 0x0a, 0x00, 0x1f, 0x11, 0x0e, 0x00};
-//
-//  I2C_LCD_Init(MyI2C_LCD);
-//  I2C_LCD_CreateCustomChar(MyI2C_LCD, 0, HeartChar);
-//  I2C_LCD_CreateCustomChar(MyI2C_LCD, 1, SmileyFaceChar);
-//  I2C_LCD_SetCursor(MyI2C_LCD, 0, 0);
-//  I2C_LCD_WriteString(MyI2C_LCD, "DeepBlueMbedded");
-//  I2C_LCD_SetCursor(MyI2C_LCD, 0, 1);
-//  I2C_LCD_WriteString(MyI2C_LCD, "I2C LCD ");
-//  I2C_LCD_PrintCustomChar(MyI2C_LCD, 1);
-//  I2C_LCD_PrintCustomChar(MyI2C_LCD, 0);
-
-
+  SCH_Add_Task(getKeyInput, 0 , 10);
 
   while(1)
   {
@@ -133,7 +117,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  SCH_Dispatch_Task() ;
-	  //
+//	  //
 //	  I2C_LCD_NoBacklight(MyI2C_LCD);    HAL_Delay(1000);
 //	    I2C_LCD_Backlight(MyI2C_LCD);    HAL_Delay(1000);
 //	    I2C_LCD_ShiftRight(MyI2C_LCD);    HAL_Delay(500);
@@ -168,7 +152,9 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI_DIV2;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -178,9 +164,9 @@ void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
@@ -285,8 +271,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4
-                          |GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_10
-                          |GPIO_PIN_11, GPIO_PIN_RESET);
+                          |GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PA1 PA2 PA3 PA4
                            PA5 PA6 PA7 */
@@ -301,13 +286,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PA10 PA11 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */

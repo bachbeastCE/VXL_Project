@@ -165,7 +165,7 @@ while(1){
 */
 
 ////INIT TIMER_10ms
-//static void TIMER_Init(){
+//static void TIMER_Init()
 //    cli(); //Disable interupt
 //
 //    /*Reset Timer/counter1*/

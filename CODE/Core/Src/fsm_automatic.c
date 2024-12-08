@@ -13,21 +13,13 @@ void run_automatic(){
 							status1 = GREEN_LED_AUTO;
 							count1 = time_green;
 						}
-//						if (isButtonPressed(modify_button)==1){
-//							status1 = RED_GREEN_MAN;
-//							status2 = RED_LED_SET;
-//							count1 = 10;
-//							count2 = 1;
-//						}
-//						if (isButtonPressed(mode_button)==1){
-//							count3=1;
-//							status1 = RED_LED_SET;
-//							status2 = RED_LED_SET;
-//							count1 = 2; //Mode
-//							count2 = time_red; //Value
-//							ResetLight1();
-//							ResetLight2();
-//						}
+						if (isButtonLongPressed(up_button)==1){
+							HAL_GPIO_TogglePin(GPIOA, LED_PINK);
+							status1 = RED_GREEN_MAN;
+							status2 = RED_GREEN_MAN;
+							count1 = 10*scale;
+							count2 = 1;
+						}
 						break;
 					}
 				case YELLOW_LED_AUTO:{
@@ -84,5 +76,8 @@ void run_automatic(){
 					default:
 							break;
 				}
+
+		if((status1/10)==1 && count1>0 )count1--;
+		if((status2/10)==1 && count2>0 )count2--;
 }
 

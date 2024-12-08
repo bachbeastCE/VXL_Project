@@ -52,9 +52,9 @@
 
 //DEFINE BUTTON FLAG
 
-#define modify_button 0
-#define mode_button 1
-#define choose_button 2
+#define up_button 0
+#define set_button 1
+
 
 // SCALE TIME
 #define scale 10 // SCALE = 1000/ cycle of traffic_light_run
