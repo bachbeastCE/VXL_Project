@@ -9,7 +9,7 @@ int status1 =INIT;
 int status2 =INIT;
 int count1 =0; //COUNTDOWN TRAFFIC LIGHT 1
 int count2 =0; //COUNTDOWN TRAFFIC LIGHT 2
-int count3 =0; //COUNTDOWN TOGGLE LED
+int count3 =scale; //COUNTDOWN TOGGLE LED
 
 //FUNCTION
 void GPIO_Init(void){

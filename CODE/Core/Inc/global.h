@@ -8,30 +8,17 @@
 #include "fsm_automatic.h"
 #include "fsm_manual.h"
 #include "fsm_setting.h"
+#include "string.h"
+#include "stdio.h"
 
 //DEFINE GPIO PIN - PORT A
-
-#define LED_RED_1  GPIO_PIN_1
-#define LED_YELLOW_1  GPIO_PIN_2
-#define LED_GREEN_1  GPIO_PIN_3
-#define LED_RED_2  GPIO_PIN_4
-#define LED_YELLOW_2  GPIO_PIN_5
-#define LED_GREEN_2  GPIO_PIN_6
-#define LED_PINK GPIO_PIN_7
-
-//DEFINE GPIO PIN - PORT B
-#define SEG0 GPIO_PIN_0
-#define SEG1 GPIO_PIN_1
-#define SEG2 GPIO_PIN_2
-#define SEG3 GPIO_PIN_3
-#define SEG4 GPIO_PIN_4
-#define SEG5 GPIO_PIN_5
-#define SEG6 GPIO_PIN_6
-
-#define EN0 GPIO_PIN_7
-#define EN1 GPIO_PIN_8
-#define EN2 GPIO_PIN_9
-#define EN3 GPIO_PIN_10
+#define LED_PINK GPIO_PIN_1
+#define LED_RED_1  GPIO_PIN_4
+#define LED_YELLOW_1  GPIO_PIN_5
+#define LED_GREEN_1  GPIO_PIN_6
+#define LED_RED_2  GPIO_PIN_7
+#define LED_YELLOW_2  GPIO_PIN_8
+#define LED_GREEN_2  GPIO_PIN_9
 
 //DEFINE STATE
 #define INIT 0
@@ -71,6 +58,8 @@ extern int count3;
 extern int time_red;
 extern int time_yellow; // red = green + yellow
 extern int time_green;
+
+extern UART_HandleTypeDef huart2;
 
 //DEFINE FUNTION
 

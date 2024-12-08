@@ -25,6 +25,7 @@ Core/Src/I2C_LCD_cfg.o: ../Core/Src/I2C_LCD_cfg.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  ../Core/Inc/I2C_LCD.h ../Core/Inc/I2C_LCD.h
 ../Core/Inc/I2C_LCD_cfg.h:
 ../Core/Inc/main.h:
@@ -53,5 +54,6 @@ Core/Src/I2C_LCD_cfg.o: ../Core/Src/I2C_LCD_cfg.c \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 ../Core/Inc/I2C_LCD.h:
 ../Core/Inc/I2C_LCD.h:

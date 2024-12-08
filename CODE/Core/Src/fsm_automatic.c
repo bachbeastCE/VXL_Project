@@ -79,5 +79,15 @@ void run_automatic(){
 
 		if((status1/10)==1 && count1>0 )count1--;
 		if((status2/10)==1 && count2>0 )count2--;
+		if((status1/10)==1 && count3>0 ){
+			count3--;
+			if(count3 ==0){
+				count3 = scale;
+				//LCD + UART HERE
+		        char str[40];
+		        sprintf(str, "Count1: %d - Count2: %d\n\r", count1/10,count2/10);
+		        HAL_UART_Transmit(&huart2, (uint8_t *)str, strlen(str), 100);
+			}
+		}
 }
 

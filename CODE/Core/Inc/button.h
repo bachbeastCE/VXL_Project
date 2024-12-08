@@ -19,8 +19,8 @@ extern const int MAX_BUTTON;
 extern int button_flag[5];
 
 //DEFINE BUTTON GPIO A
-#define UP_BUTTON GPIO_PIN_8
-#define SET_BUTTON GPIO_PIN_9
+#define UP_BUTTON GPIO_PIN_10
+#define SET_BUTTON GPIO_PIN_11
 
 void getKeyInput();
 int isButtonPressed(int button_index);
